@@ -33,12 +33,11 @@ folder.
   enums, and structs from other types, so the Mint role appears only where a
   language server supplies semantic tokens. Macro definitions are captured as
   macros (Magenta) rather than preprocessor (Muted bold).
-- Tree-sitter without per-language overrides: Python's `and`, `or`, `not`, `is`
-  share the capture used for `typeof`/`new`, so they take the control-flow
-  color; Python builtin types take the keyword color.
 - Renamed files use Magenta.
-- Zed's Python grammar captures `import`/`from` as plain keywords and
-  docstrings as strings, so they render Blue and Orange.
+- Zed's Python grammar captures control-flow keywords (`if`, `for`,
+  `return`, `import`, …) and `and`/`or`/`not`/`is` as plain keywords, so they
+  take the keyword color (Blue); builtin types take the type color (Teal).
+  Docstrings are captured as strings (Orange).
 
 Tested with Zed 0.223.3.
 
