@@ -29,7 +29,7 @@ SYNTAX_ROLES = {
     "regex": ["string.regex"],
     "number": ["number"],
     "tag": ["tag"],
-    "preprocessorKeyword": ["preproc"],
+    "preprocessorKeyword": ["keyword.directive", "preproc"],
     "label": ["label"],
     "heading": ["title"],
     "link": ["link_text"],
@@ -154,6 +154,22 @@ def test_player_and_every_color_value_in_palette():
     for path, value in colors:
         assert normalize_hex(value) in allowed, f"{path} = {value}"
     assert style()["players"][0]["cursor"] == C["foreground"]
+
+
+def zed_style(capture):
+    parts = capture.split(".")
+    best, best_len = None, 0
+    for key, value in style()["syntax"].items():
+        key_parts = key.split(".")
+        if all(p in parts for p in key_parts) and len(key_parts) >= best_len:
+            best, best_len = value, len(key_parts)
+    return best
+
+
+def test_c_preprocessor_captures():
+    directive = zed_style("keyword.directive")
+    assert directive["color"] == C["foreground"] and directive["font_weight"] == 700
+    assert zed_style("function.special")["color"] == C["magenta"]
 
 
 def test_port_conventions():

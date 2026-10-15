@@ -31,11 +31,15 @@ folder.
 
 - Tree-sitter without semantic tokens: no capture distinguishes interfaces,
   enums, and structs from other types, so the Mint role appears only where a
-  language server supplies semantic tokens. Macro definitions are captured as
-  macros (Magenta) rather than preprocessor (Muted bold).
+  language server supplies semantic tokens.
+- C/C++ preprocessor directives are bold Foreground. Function-like macro
+  definitions are Magenta (Rust macro calls such as `println!` share the
+  capture and are Magenta too); object-like macro names (`#define MAX 3`) get
+  only Zed's all-caps constant capture, so they are Cyan.
 - Renamed files use Magenta.
 - Zed's Python grammar captures control-flow keywords (`if`, `for`,
-  `return`, `import`, …) and `and`/`or`/`not`/`is` as plain keywords, so they
+  `return`, `import`, …) and `and`/`or`/`not`/`is`/`in` (including a for-loop's
+  `in`) as plain keywords, so they
   take the keyword color (Blue); builtin types take the type color (Teal).
   Docstrings are captured as strings (Orange).
 
