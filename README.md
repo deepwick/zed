@@ -42,6 +42,9 @@ folder.
   `in`) as plain keywords, so they
   take the keyword color (Blue); builtin types take the type color (Teal).
   Docstrings are captured as strings (Orange).
+- Zed releases from March 2026 match captures by longest prefix, and their C/C++
+  grammar marks directives `keyword.preproc`; this theme sets that capture bold
+  Foreground too, so directives look the same on both.
 
 Tested with Zed 0.223.3.
 

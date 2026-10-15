@@ -159,6 +159,7 @@
           "keyword": { "color": "#569CD6", "font_style": null, "font_weight": null },
           "keyword.control": { "color": "#C586C0", "font_style": null, "font_weight": null },
           "keyword.directive": { "color": "#D4D4D4", "font_style": null, "font_weight": 700 },
+          "keyword.preproc": { "color": "#D4D4D4", "font_style": null, "font_weight": 700 },
           "label": { "color": "#D4D4D4", "font_style": null, "font_weight": null },
           "link_text": { "color": "#CE9178", "font_style": null, "font_weight": null },
           "link_uri": { "color": "#CE9178", "font_style": null, "font_weight": null },

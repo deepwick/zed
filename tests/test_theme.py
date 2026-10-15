@@ -166,6 +166,22 @@ def zed_style(capture):
     return best
 
 
+def zed_style_prefix(capture):
+    """Current Zed (>= 2026-03): longest theme key that is a dot-prefix of the capture."""
+    best, best_len = None, -1
+    for key, value in style()["syntax"].items():
+        if (capture == key or capture.startswith(key + ".")) and len(key) > best_len:
+            best, best_len = value, len(key)
+    return best
+
+
+@pytest.mark.parametrize("match", [zed_style, zed_style_prefix], ids=["zed-0.223", "zed-current"])
+@pytest.mark.parametrize("capture", ["keyword.directive", "keyword.preproc", "preproc"])
+def test_preprocessor_bold_foreground_in_both_matchers(match, capture):
+    directive = match(capture)
+    assert directive["color"] == C["foreground"] and directive["font_weight"] == 700
+
+
 def test_c_preprocessor_captures():
     directive = zed_style("keyword.directive")
     assert directive["color"] == C["foreground"] and directive["font_weight"] == 700
